@@ -2,6 +2,7 @@ let openSideMenu = document.querySelector(".side-menu__button--hamburguer");
 let modal = document.querySelector(".modal");
 let closeModal = modal.querySelector(".close");
 let modalImg = modal.querySelector(".modal__image");
+let modalLike = modal.querySelector(".modal__like");
 let selectedImage = null;
 
     openSideMenu.addEventListener("click",()=>{
@@ -48,11 +49,35 @@ let selectedImage = null;
 
     function openModal(img){
             modal.classList.remove("hidden")
-            modal.querySelector(".modal__image").src=img.src;   
+            updateModal(img);
+              
         }
 
 
+    function updateModal(img){
+         modalImg.src = img.src
+         if(isLiked(img)){
+         modalLike.classList.remove("hidden")     
+    }else{
+        modalLike.classList.add("hidden");
+       
+      }
+      selectedImage = img;
+    }
 
+    function isLiked(img){
+        let likeImg = img.previousElementSibling;
+        if(likeImg.classList.contains("item__like")){
+            if(likeImg.classList.contains("hidden")){
+                return false;
+            }else{
+                return true;
+            }
+
+
+        };
+        
+    }
     
 
     closeModal.addEventListener("click",()=>{
@@ -63,7 +88,13 @@ let selectedImage = null;
 
 
     modalImg.addEventListener("dblclick",()=>{
-        likeHandler()
+        likeHandler(selectedImage);
+        if(modalLike.classList.contains("hidden")){
+            modalLike.classList.remove("hidden")
+        }else{
+            modalLike.classList.add("hidden")
+        }
+        
     })
 
  
