@@ -66,6 +66,7 @@ let selectedImage = null;
        
       }
       selectedImage = img;
+      handleArrow(img);
     }
 
     function isLiked(img){
@@ -112,6 +113,21 @@ let selectedImage = null;
         let nextImg = nextCard.querySelector(".item__image");
         updateModal(nextImg);
     })
+    
+    function handleArrow(img){
+        let cards = img.parentNode;
 
+        if(cards.previousElementSibling == null){
+            arrowBack.style.display = "none"
+        }else{
+            arrowBack.style.display = "block"
+        }
+
+        if(cards.nextElementSibling == null){
+            arrowNext.style.display = "none"
+        }else{
+            arrowNext.style.display = "block"
+        }
+    }
 
  
