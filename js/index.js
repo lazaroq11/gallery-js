@@ -3,7 +3,10 @@ let modal = document.querySelector(".modal");
 let closeModal = modal.querySelector(".close");
 let modalImg = modal.querySelector(".modal__image");
 let modalLike = modal.querySelector(".modal__like");
+let arrowNext = modal.querySelector(".next");
+let arrowBack = modal.querySelector(".previous");
 let selectedImage = null;
+
 
     openSideMenu.addEventListener("click",()=>{
     let sideMenu = document.querySelector(".side-menu");
@@ -96,5 +99,19 @@ let selectedImage = null;
         }
         
     })
+
+    arrowBack.addEventListener("click",()=>{
+        let previousCard = selectedImage.parentNode.previousElementSibling;
+        let previousImg = previousCard.querySelector(".item__image");
+        updateModal(previousImg);
+    })
+
+    
+    arrowNext.addEventListener("click",()=>{
+        let nextCard = selectedImage.parentNode.nextElementSibling;
+        let nextImg = nextCard.querySelector(".item__image");
+        updateModal(nextImg);
+    })
+
 
  
