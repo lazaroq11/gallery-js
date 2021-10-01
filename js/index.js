@@ -12,3 +12,35 @@ openSideMenu.addEventListener("click",()=>{
         btnimg.src = "./assets/closed-menu.svg";
     }
 });
+
+    document.querySelectorAll(".item__image").forEach(img => {
+    img.addEventListener("dblclick",()=>{
+        let like = img.previousElementSibling;
+        if(like.classList.contains("item__like")){
+            if(like.classList.contains("hidden")){
+                like.classList.remove("hidden")
+            }else{
+                like.classList.add("hidden")
+            }
+        }
+
+    });
+    
+    img.addEventListener("click",()=>{
+        let modal = document.querySelector(".modal");
+
+        if(modal.classList.contains("hidden")){
+            modal.classList.remove("hidden")
+            modal.querySelector(".modal__image").src=img.src;
+        }else{
+            modal.classList.add("hidden")
+            modal.querySelector(".modal__image").src="";
+        }
+        
+     
+    }
+    )
+});
+
+
+   
